@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Danely Sánchez</title>
+  <meta name="description" content="IT Engineer & Full Stack Developer focused on AI and Cybersecurity. Projects, publications and achievements.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    // Apply saved theme before paint to avoid a flash.
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    } catch (e) {}
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3ecdd;
+      --paper-dark: #e8dfc9;
+      --ink: #2c2a22;
+      --ink-soft: #57543f;
+      --line: rgba(44, 42, 34, 0.18);
+      --sage: #7c8b6f;
+      --sage-dark: #435a3a;
+      --sage-light: #dbe3ce;
+      --dusk: #6f8ba0;
+      --dusk-dark: #2f4a5c;
+      --dusk-light: #d7e2e8;
+      --kraft: #c9a876;
+      --kraft-dark: #7a5c34;
+      --kraft-light: #ecdfc4;
+      --stamp: #b8503a;
+      --shadow: rgba(44, 42, 34, 0.10);
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #201f19;
+      --paper-dark: #17160f;
+      --ink: #f1ead9;
+      --ink-soft: #beb69d;
+      --line: rgba(241, 234, 217, 0.18);
+      --sage: #93a882;
+      --sage-dark: #a9c98f;
+      --sage-light: #384030;
+      --dusk: #86a6ba;
+      --dusk-dark: #9ecbe3;
+      --dusk-light: #26333d;
+      --kraft: #c9a876;
+      --kraft-dark: #e0bd85;
+      --kraft-light: #3a3226;
+      --stamp: #e2735a;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --paper: #201f19;
+        --paper-dark: #17160f;
+        --ink: #f1ead9;
+        --ink-soft: #beb69d;
+        --line: rgba(241, 234, 217, 0.18);
+        --sage: #93a882;
+        --sage-dark: #a9c98f;
+        --sage-light: #384030;
+        --dusk: #86a6ba;
+        --dusk-dark: #9ecbe3;
+        --dusk-light: #26333d;
+        --kraft: #c9a876;
+        --kraft-dark: #e0bd85;
+        --kraft-light: #3a3226;
+        --stamp: #e2735a;
+        --shadow: rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--paper);
+      background-image: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--ink) 10%, transparent) 1px, transparent 0);
+      background-size: 14px 14px;
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color .2s ease, color .2s ease;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+    /* Type helpers */
+    .mono { font-family: 'Space Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+    .script { font-family: 'Caveat', cursive; }
+    .display { font-family: 'Fraunces', serif; }
+
+    /* Folder-tab nav */
+    nav { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding-top: 12px; }
+    .tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .tabs a {
+      text-decoration: none; padding: 8px 14px; border: 1px solid var(--line); border-bottom: none;
+      border-radius: 10px 10px 0 0; background: var(--paper-dark); color: var(--ink-soft); white-space: nowrap;
+    }
+    .tabs a:hover { background: var(--paper); color: var(--ink); }
+    .tabs a.active { background: var(--paper); color: var(--ink); font-weight: 700; }
+    .theme-btn {
+      margin-bottom: 8px; cursor: pointer; background: transparent; color: var(--ink-soft);
+      border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; white-space: nowrap;
+    }
+    .theme-btn:hover { color: var(--ink); }
+
+    /* Paper card */
+    .card {
+      position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: 0 6px 0 0 var(--shadow); padding: 22px;
+    }
+    .tilt-l { transform: rotate(-1.2deg); }
+    .tilt-r { transform: rotate(1deg); }
+
+    /* Washi tape */
+    .tape {
+      position: absolute; height: 22px; width: 84px; opacity: .9; box-shadow: 0 1px 2px rgba(0,0,0,.08);
+      clip-path: polygon(2% 0, 98% 0, 100% 20%, 100% 100%, 0 100%, 0 20%);
+    }
+    .tape.sage { background: color-mix(in srgb, var(--sage-light) 85%, transparent); }
+    .tape.dusk { background: color-mix(in srgb, var(--dusk-light) 85%, transparent); }
+    .tape.kraft { background: color-mix(in srgb, var(--kraft) 45%, transparent); }
+
+    .clip { position: absolute; width: 44px; height: 44px; color: var(--ink-soft); opacity: .75; }
+
+    /* Hero ID card */
+    header.hero { padding: 48px 0 40px; }
+    .id-card { padding: 40px 28px 34px; }
+    .id-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; }
+    .id-grid { display: grid; gap: 32px; margin-top: 28px; grid-template-columns: 1.5fr 1fr; align-items: start; }
+    h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(44px, 8vw, 68px); line-height: .95; }
+    h1 .script { font-weight: 500; color: var(--sage-dark); font-size: 1.12em; }
+    .role { margin-top: 10px; font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; color: var(--ink-soft); }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; margin-top: 26px; }
+    .field { border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+    .field dt { color: var(--sage-dark); font-size: 10px; }
+    .field dd { font-family: 'Caveat', cursive; font-size: 25px; line-height: 1.05; margin-top: 4px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .pill {
+      display: inline-block; text-decoration: none; border-radius: 999px; padding: 10px 20px;
+      border: 1px solid var(--line); transition: transform .15s ease;
+    }
+    .pill:hover { transform: translateY(-2px); }
+    .pill.solid { background: var(--sage-dark); color: var(--paper); border-color: var(--sage-dark); }
+    .photo {
+      justify-self: center; width: 170px; height: 200px; transform: rotate(-2deg);
+      border: 2px dashed var(--line); background: color-mix(in srgb, var(--paper-dark) 70%, transparent);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; color: var(--ink-soft);
+    }
+    .photo .initials { font-family: 'Fraunces', serif; font-size: 54px; color: var(--sage-dark); line-height: 1; }
+    .stamp {
+      position: absolute; right: 22px; bottom: -18px; width: 74px; height: 74px; border-radius: 50%;
+      border: 2px dashed color-mix(in srgb, var(--stamp) 65%, transparent); color: color-mix(in srgb, var(--stamp) 80%, transparent);
+      display: flex; align-items: center; justify-content: center; text-align: center; transform: rotate(10deg);
+      font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; background: var(--paper);
+    }
+
+    /* Sections */
+    section { padding: 44px 0; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+    .sec-head h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px; }
+    .sec-head .mono { color: var(--dusk-dark); }
+    .dashed {
+      height: 1px; flex: 1;
+      background-image: linear-gradient(to right, var(--ink-soft) 40%, transparent 0%);
+      background-size: 8px 1px; background-repeat: repeat-x; opacity: .5;
+    }
+
+    /* Quick note */
+    .note { max-width: 640px; margin-left: auto; padding: 26px 26px 22px; }
+    .note p { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; color: var(--ink-soft); }
+    .note .mono { color: var(--kraft-dark); display: block; margin-bottom: 8px; }
+
+    /* Fun facts */
+    .facts { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .num {
+      display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 22px; border-radius: 999px;
+      font-family: 'Space Mono', monospace; font-size: 11px; margin-bottom: 10px;
+    }
+    .facts h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; line-height: 1.2; }
+    .facts p { font-size: 14px; color: var(--ink-soft); margin-top: 4px; }
+
+    /* Tags */
+    .tag {
+      display: inline-flex; border-radius: 999px; border: 1px solid; padding: 3px 10px;
+      font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .tag.sage, .num.sage { background: var(--sage-light); color: var(--sage-dark); border-color: color-mix(in srgb, var(--sage) 35%, transparent); }
+    .tag.dusk, .num.dusk { background: var(--dusk-light); color: var(--dusk-dark); border-color: color-mix(in srgb, var(--dusk) 35%, transparent); }
+    .tag.kraft, .num.kraft { background: var(--kraft-light); color: var(--kraft-dark); border-color: color-mix(in srgb, var(--kraft) 45%, transparent); }
+
+    /* Folder cards (projects) */
+    .folders { display: grid; gap: 30px 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); padding-top: 14px; }
+    .folder { position: relative; display: block; text-decoration: none; transition: transform .18s ease; }
+    .folder:nth-child(odd) { transform: rotate(-.8deg); }
+    .folder:nth-child(even) { transform: rotate(.7deg); }
+    .folder:hover { transform: translateY(-4px) rotate(0deg); }
+    .folder .ear {
+      position: absolute; top: -16px; left: 18px; height: 18px; width: 110px; border: 1px solid var(--line); border-bottom: none;
+      border-radius: 8px 8px 0 0;
+    }
+    .folder .body {
+      border: 1px solid var(--line); border-radius: 4px 14px 14px 14px; padding: 20px; min-height: 100%;
+      box-shadow: 0 6px 0 0 var(--shadow);
+    }
+    .folder.sage .ear, .folder.sage .body { background: var(--sage-light); }
+    .folder.dusk .ear, .folder.dusk .body { background: var(--dusk-light); }
+    .folder.kraft .ear, .folder.kraft .body { background: var(--kraft-light); }
+    .folder h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; line-height: 1.2; margin: 12px 0 6px; }
+    .folder p { font-size: 14.5px; color: var(--ink-soft); }
+    .folder .go { display: inline-block; margin-top: 14px; color: var(--ink); }
+    .folder .tag { background: var(--paper); }
+
+    /* Papers */
+    .papers { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .paper { text-decoration: none; display: block; padding: 26px 22px 22px; transition: transform .15s ease; }
+    .paper:hover { transform: translateY(-3px) rotate(0deg); }
+    .paper .lines { margin-top: 14px; height: 34px; background-image: repeating-linear-gradient(to bottom, transparent 0 10px, var(--line) 10px 11px); }
+    .paper h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; line-height: 1.2; margin-top: 10px; }
+    .paper .go { display: inline-block; margin-top: 12px; color: var(--sage-dark); }
+
+    /* Timeline */
+    .timeline { list-style: none; }
+    .timeline li { position: relative; padding: 0 0 26px 28px; border-left: 2px dashed var(--line); }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li::before {
+      content: ""; position: absolute; left: -8px; top: 5px; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--paper); border: 2px solid var(--sage-dark);
+    }
+    .timeline .when { color: var(--dusk-dark); }
+    .timeline h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; line-height: 1.3; margin-top: 2px; }
+    .timeline .org { font-family: 'Caveat', cursive; font-size: 22px; color: var(--sage-dark); line-height: 1.1; }
+    .timeline p { font-size: 14.5px; color: var(--ink-soft); margin-top: 4px; }
+
+    /* Corkboard achievements */
+    .board { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+    .pin { position: relative; padding: 22px 18px 16px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 4px 0 0 var(--shadow); }
+    .pin::before {
+      content: ""; position: absolute; top: -7px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%;
+      background: var(--stamp); box-shadow: inset -2px -2px 0 rgba(0,0,0,.2);
+    }
+    .pin:nth-child(3n+1) { transform: rotate(-1.4deg); }
+    .pin:nth-child(3n+2) { transform: rotate(.9deg); }
+    .pin:nth-child(3n) { transform: rotate(-.5deg); }
+    .pin:nth-child(4n+2)::before { background: var(--sage-dark); }
+    .pin:nth-child(4n+3)::before { background: var(--dusk-dark); }
+    .pin:nth-child(4n)::before { background: var(--kraft-dark); }
+    .pin .year { color: var(--ink-soft); }
+    .pin h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16.5px; line-height: 1.25; margin: 6px 0 4px; }
+    .pin p { font-size: 13.5px; color: var(--ink-soft); }
+
+    /* Skills */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    footer { padding: 40px 0 60px; text-align: center; }
+    footer .script { font-size: 30px; color: var(--sage-dark); }
+    footer .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+    footer .made { color: var(--ink-soft); }
+
+    @media (max-width: 680px) {
+      .id-card { padding: 34px 20px 30px; }
+      .id-grid { grid-template-columns: 1fr; }
+      .photo { order: -1; width: 140px; height: 160px; }
+      .fields { grid-template-columns: 1fr; }
+      .stamp { right: 14px; bottom: -22px; }
+      .sec-head h2 { font-size: 27px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <div class="tabs mono">
+        <a class="active" href="#top">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#papers">Papers</a>
+        <a href="#path">Path</a>
+        <a href="#board">Achievements</a>
+      </div>
+      <button class="theme-btn mono" id="themeBtn" type="button" aria-label="Toggle light and dark mode">Mode</button>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="card id-card tilt-l">
+        <span class="tape sage" style="top:-11px; left:32px; transform:rotate(-6deg)"></span>
+        <span class="tape dusk" style="top:-11px; right:56px; transform:rotate(3deg)"></span>
+        <svg class="clip" style="top:-18px; right:-10px; transform:rotate(12deg)" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 10 V28 a6 6 0 0 0 12 0 V8 a4 4 0 0 0-8 0 V26 a2 2 0 0 0 4 0 V12" stroke-linecap="round"/>
+        </svg>
+
+        <div class="id-top">
+          <span class="mono" style="color:var(--dusk-dark)">Portfolio file</span>
+          <span class="mono" style="color:var(--ink-soft)">File N.º 2026-01</span>
+        </div>
+
+        <div class="id-grid">
+          <div>
+            <h1>Danely <span class="script">Sánchez</span></h1>
+            <p class="role">IT Engineer + Full Stack Developer</p>
+            <dl class="fields">
+              <div class="field"><dt class="mono">Base</dt><dd>Ibarra, Ecuador (remote)</dd></div>
+              <div class="field"><dt class="mono">Specialty</dt><dd>AI + Cybersecurity</dd></div>
+              <div class="field"><dt class="mono">Current status</dt><dd>Building AI products at Digevo Ventures</dd></div>
+              <div class="field"><dt class="mono">Languages</dt><dd>ES / EN / FR</dd></div>
+            </dl>
+            <div class="cta mono">
+              <a class="pill solid" href="https://github.com/Danelu19">GitHub</a>
+              <a class="pill" href="https://www.linkedin.com/in/danelysanchez">LinkedIn</a>
+              <a class="pill" href="https://scholar.google.com/citations?user=G9mX8W4AAAAJ">Scholar</a>
+            </div>
+          </div>
+          <div class="photo">
+            <span class="initials">DS</span>
+            <span class="mono" style="font-size:10px">Name<br>Danely Sánchez</span>
+          </div>
+        </div>
+        <div class="stamp">IEEE<br>member</div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <div class="card note tilt-r">
+        <span class="tape kraft" style="top:-11px; left:40%; transform:rotate(-2deg)"></span>
+        <span class="mono">Quick note</span>
+        <p>Hi, I'm Danely. I'm an IT engineer and full stack developer, obsessed with solving complex problems with data, code and AI. Between research papers, hackathons and products in production, this is what my work folder looks like so far.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>Fun facts</h2><span class="dashed"></span></div>
+      <div class="facts">
+        <div class="card"><span class="num sage">01</span><h3>1st place — Q-Evolution Hackathon</h3><p>Social-impact solutions with AI, 2026</p></div>
+        <div class="card"><span class="num dusk">02</span><h3>Former IEEE CS President</h3><p>Student chapter at Yachay Tech, 2022–2025</p></div>
+        <div class="card"><span class="num kraft">03</span><h3>2 published papers</h3><p>IEEE ETCM 2024 · TICEC 2024</p></div>
+        <div class="card"><span class="num sage">04</span><h3>3 languages</h3><p>Spanish native, English B2, French A1-A2</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head"><h2>From the archive</h2><span class="mono">Projects</span><span class="dashed"></span></div>
+      <div class="folders">
+        <a class="folder sage" href="https://github.com/Danelu19/EEG-CapsNet-Classification">
+          <span class="ear"></span>
+          <div class="body">
+            <span class="tag sage">Thesis · Deep learning</span>
+            <h3>EEG-CapsNet-Classification</h3>
+            <p>Classifying EEG signals of spoken digits with Capsule Networks vs. CNN, using raw, STFT and Morlet representations.</p>
+            <span class="go mono">View code →</span>
+          </div>
+        </a>
+        <a class="folder dusk" href="https://danelu19.github.io/example_ciber/">
+          <span class="ear"></span>
+          <div class="body">
+            <span class="tag dusk">Cybersecurity</span>
+            <h3>You scanned without looking</h3>
+            <p>Interactive awareness page: what an attacker can learn when you scan a QR code without checking it.</p>
+            <span class="go mono">Open site →</span>
+          </div>
+        </a>
+        <a class="folder kraft" href="https://github.com/Danelu19/cv_imageclass_densenet121">
+          <span class="ear"></span>
+          <div class="body">
+            <span class="tag kraft">Computer vision</span>
+            <h3>DenseNet121 on CIFAR-10</h3>
+            <p>Image classification with transfer learning, tuned to improve model performance.</p>
+            <span class="go mono">View code →</span>
+          </div>
+        </a>
+        <a class="folder dusk" href="https://github.com/Danelu19/FirstProyect-Steganography">
+          <span class="ear"></span>
+          <div class="body">
+            <span class="tag dusk">Security</span>
+            <h3>Steganography</h3>
+            <p>Hiding information inside other data to keep it confidential.</p>
+            <span class="go mono">View code →</span>
+          </div>
+        </a>
+        <a class="folder kraft" href="https://danelu19.github.io/D-a-Internacional-de-las-Ni-as-en-las-TICs/">
+          <span class="ear"></span>
+          <div class="body">
+            <span class="tag kraft">Outreach</span>
+            <h3>Girls in ICT mind map</h3>
+            <p>Interactive mind map on ICT and computer science for International Girls in ICT Day.</p>
+            <span class="go mono">Open site →</span>
+          </div>
+        </a>
+        <a class="folder sage" href="https://github.com/Danelu19/CV-Labs">
+          <span class="ear"></span>
+          <div class="body">
+            <span class="tag sage">Computer vision</span>
+            <h3>CV Labs</h3>
+            <p>Computer vision labs and experiments.</p>
+            <span class="go mono">View code →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="papers">
+    <div class="wrap">
+      <div class="sec-head"><h2>Published papers</h2><span class="dashed"></span></div>
+      <div class="papers">
+        <a class="card paper tilt-l" href="https://scholar.google.com/citations?view_op=view_citation&hl=es&user=G9mX8W4AAAAJ&citation_for_view=G9mX8W4AAAAJ:d1gkVwhDpl0C">
+          <span class="tape dusk" style="top:-11px; left:24px; transform:rotate(-4deg)"></span>
+          <span class="tag dusk">IEEE ETCM · 2024</span>
+          <h3>5G V2X communications in urban scenarios</h3>
+          <div class="lines"></div>
+          <span class="go mono">Read on Scholar →</span>
+        </a>
+        <a class="card paper tilt-r" href="https://scholar.google.com/citations?view_op=view_citation&hl=es&user=G9mX8W4AAAAJ&citation_for_view=G9mX8W4AAAAJ:u-x6o8ySG0sC">
+          <span class="tape sage" style="top:-11px; right:28px; transform:rotate(5deg)"></span>
+          <span class="tag sage">TICEC · 2024</span>
+          <h3>Adaptation dynamics of Galápagos finches</h3>
+          <div class="lines"></div>
+          <span class="go mono">Read on Scholar →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="path">
+    <div class="wrap">
+      <div class="sec-head"><h2>Experience &amp; education</h2><span class="dashed"></span></div>
+      <div class="card">
+        <ul class="timeline">
+          <li>
+            <span class="when mono">Oct 2025 — Present</span>
+            <h3>AI Product Builder — Full Stack Developer</h3>
+            <span class="org">Digevo Ventures</span>
+            <p>Technical lead on building and refactoring scalable AI platforms; cloud cost optimization; generative AI research.</p>
+          </li>
+          <li>
+            <span class="when mono">2026 — Present</span>
+            <h3>Master's in Cybersecurity</h3>
+            <span class="org">UNIR, Spain</span>
+          </li>
+          <li>
+            <span class="when mono">Sep 2023 — Oct 2025</span>
+            <h3>Microsoft Platforms Intern</h3>
+            <span class="org">Yachay Tech University</span>
+            <p>Automated institutional workflows with Power Apps and Power Automate; managed SharePoint architecture.</p>
+          </li>
+          <li>
+            <span class="when mono">2024</span>
+            <h3>Exchange — Data analysis &amp; statistical inference</h3>
+            <span class="org">Universidad de Concepción, Chile</span>
+          </li>
+          <li>
+            <span class="when mono">2019 — 2025</span>
+            <h3>B.Sc. in Information Technology</h3>
+            <span class="org">Yachay Tech University, Ecuador</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="board">
+    <div class="wrap">
+      <div class="sec-head"><h2>Achievements board</h2><span class="dashed"></span></div>
+      <div class="board">
+        <div class="pin"><span class="year mono">2026</span><h3>1st place — Q-Evolution Hackathon</h3><p>Team QuantumWarriors</p></div>
+        <div class="pin"><span class="year mono">2023</span><h3>2nd place — IAckathon</h3><p>FUNDAPI, with PADF and USAID</p></div>
+        <div class="pin"><span class="year mono">2026</span><h3>Leadership scholar</h3><p>Hacker/Women Leadership Space, Nación Hacker</p></div>
+        <div class="pin"><span class="year mono">2026</span><h3>She Plus Tech scholar</h3><p>Coursera</p></div>
+        <div class="pin"><span class="year mono">2025</span><h3>WAVE LatAm international scholar</h3><p>SubOptic Foundation, Montevideo</p></div>
+        <div class="pin"><span class="year mono">2025</span><h3>Invited speaker</h3><p>IEEE EPS &amp; WIE Chapters</p></div>
+        <div class="pin"><span class="year mono">2024</span><h3>Organizer — ICACM-S 2024</h3><p>Applied Mathematics &amp; Computing conference</p></div>
+        <div class="pin"><span class="year mono">2024</span><h3>Student ambassador</h3><p>IEEEXtreme 18.0</p></div>
+        <div class="pin"><span class="year mono">2024</span><h3>8 DataCamp courses</h3><p>Generative AI, LLMs, AI Ethics, PyTorch, scikit-learn</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>Toolbox</h2><span class="dashed"></span></div>
+      <div class="chips">
+        <span class="tag sage">Python</span><span class="tag sage">JavaScript</span><span class="tag sage">Node.js</span>
+        <span class="tag sage">React</span><span class="tag sage">C++</span><span class="tag sage">SQL</span><span class="tag sage">Git</span>
+        <span class="tag dusk">Machine learning</span><span class="tag dusk">Deep learning</span><span class="tag dusk">Computer vision</span>
+        <span class="tag kraft">Statistics</span><span class="tag kraft">R</span><span class="tag kraft">Matlab</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="script">Thanks for stopping by!</p>
+      <div class="links mono">
+        <a class="pill" href="https://github.com/Danelu19">GitHub</a>
+        <a class="pill" href="https://www.linkedin.com/in/danelysanchez">LinkedIn</a>
+        <a class="pill" href="https://scholar.google.com/citations?user=G9mX8W4AAAAJ">Scholar</a>
+      </div>
+      <p class="made mono">One HTML file · hosted free on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('themeBtn');
+      function isDark() {
+        var t = root.getAttribute('data-theme');
+        if (t) return t === 'dark';
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      btn.addEventListener('click', function () {
+        var next = isDark() ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+
+      // Highlight the folder tab of the section in view.
+      var tabs = document.querySelectorAll('.tabs a');
+      var ids = Array.prototype.map.call(tabs, function (a) { return a.getAttribute('href').slice(1); });
+      function onScroll() {
+        var current = ids[0];
+        ids.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top < 120) current = id;
+        });
+        tabs.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+</body>
+</html>
